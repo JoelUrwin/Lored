@@ -1,10 +1,8 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="Lored:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Lored_jar</output-path>
+    <output-path>$PROJECT_DIR$/artifacts</output-path>
     <root id="archive" name="Lored.jar">
       <element id="module-output" name="Lored" />
-      <element id="extracted-dir" path="$USER_HOME$/Downloads/spigot-api-1.16.5-R0.1-20210215.084021-22.jar" path-in-jar="/" />
-      <element id="file-copy" path="$PROJECT_DIR$/src/in/joelurw/Lored/plugin.yml" />
     </root>
   </artifact>
 </component>
