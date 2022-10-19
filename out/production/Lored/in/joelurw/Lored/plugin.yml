@@ -1,0 +1,7 @@
+main: in.joelurw.Lored.Lored
+version: 0.11
+api-version: 1.14
+name: Lored
+commands:
+  lore:
+    description: Opens Lore Editor
