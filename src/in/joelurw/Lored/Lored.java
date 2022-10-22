@@ -4,7 +4,6 @@ import in.joelurw.Lored.commands.Lore;
 import in.joelurw.Lored.events.LoreScrollApplyEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
-
 public class Lored extends JavaPlugin {
 
     public static Lored getPlugin() {

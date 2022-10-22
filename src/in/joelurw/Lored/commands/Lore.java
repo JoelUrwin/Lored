@@ -16,6 +16,7 @@ import org.bukkit.persistence.PersistentDataType;
 
 import java.util.*;
 
+
 public class Lore implements CommandExecutor {
 
     @Override
@@ -195,7 +196,7 @@ public class Lore implements CommandExecutor {
 
             }else{
                 if(player.hasPermission("lore.access_editor")){
-                    player.sendMessage(ChatColor.LIGHT_PURPLE + " *** Lored Plugin by hxfr *** ");
+                    player.sendMessage(ChatColor.LIGHT_PURPLE + " *** Lore Scroll Plugin by Joel *** ");
                     player.sendMessage(ChatColor.LIGHT_PURPLE +  "Lored Commands");
                     player.sendMessage(ChatColor.GRAY + "/lore edit (line number) (text)");
                     player.sendMessage(ChatColor.GRAY + "Changes the lore of an item that is loreable at a certain line.");
@@ -216,7 +217,7 @@ public class Lore implements CommandExecutor {
         if (!(sender instanceof Player)){
 
         if(args[0].equalsIgnoreCase("give")){
-            Bukkit.getServer().getConsoleSender().sendMessage("Debug from hxfr");
+            Bukkit.getServer().getConsoleSender().sendMessage("Debug from Joel");
             if(!(Bukkit.getPlayer(args[1]) == null)) {
                 if (args[2] == null){return false;}
                 Player target = Bukkit.getPlayer(args[1]);
