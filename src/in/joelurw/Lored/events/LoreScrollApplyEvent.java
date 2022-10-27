@@ -1,5 +1,6 @@
 package in.joelurw.Lored.events;
 
+import in.joelurw.Lored.Lang;
 import in.joelurw.Lored.Lored;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -40,12 +41,12 @@ public class LoreScrollApplyEvent implements Listener {
             ItemMeta ci = e.getCursor().getItemMeta();
             ItemStack cii = e.getCursor();
             if (ci.getPersistentDataContainer().isEmpty()) return;
-            if (applicant.getAmount() > 1){p.sendMessage(ChatColor.LIGHT_PURPLE + "Only one item can be lored!");return;}
+            if (applicant.getAmount() > 1){p.sendMessage(Lang.OVERSTACKED.toString());return;}
             PersistentDataContainer data = ci.getPersistentDataContainer();
 
             if (applicantData.has(new NamespacedKey(Lored.getPlugin(), "lored"), PersistentDataType.STRING)){
 
-                p.sendMessage(ChatColor.LIGHT_PURPLE + "This item has already had a lore scroll applied.");
+                p.sendMessage(Lang.INAPPLICABLE.toString());
                 return;
             }
 
@@ -58,13 +59,13 @@ public class LoreScrollApplyEvent implements Listener {
                 applicantData.set(new NamespacedKey(Lored.getPlugin(), "lored"), PersistentDataType.STRING, "true");
                 applicant.setItemMeta(applicantmeta);
                 p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10f, 10f);
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§bSuccessfully Applied the Lore Scroll!"));
+                p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(Lang.SUCCESS.toString()));
                 for (Player player : Bukkit.getServer().getOnlinePlayers()){
 
-                    TextComponent message = new TextComponent(String.format("§b%s just applied a Lore Scroll!", p.getName()));
+                    TextComponent message = new TextComponent(String.format(Lang.BROADCAST.toString(), p.getName()));
 
-                    message.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://shop.europamc.net"));
-                    message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click to go to the store!").color(net.md_5.bungee.api.ChatColor.BOLD).italic(false).create()));
+                    message.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, Lang.STORE_URL.toString()));
+                    message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(Lang.STORE_URL_HOVER.toString()).color(net.md_5.bungee.api.ChatColor.BOLD).italic(false).create()));
                     player.spigot().sendMessage(message);
                 }
                 cii.setAmount(cii.getAmount() - 1);

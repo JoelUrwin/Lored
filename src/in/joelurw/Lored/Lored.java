@@ -30,6 +30,7 @@ public class Lored extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new LoreScrollApplyEvent(), this);
         getCommand("lore").setExecutor(new Lore());
 
+
     }
 
     @Override

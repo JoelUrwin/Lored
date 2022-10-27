@@ -1,6 +1,7 @@
 package in.joelurw.Lored.commands;
 
 import in.joelurw.Lored.ItemManagement;
+import in.joelurw.Lored.Lang;
 import in.joelurw.Lored.Lored;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -36,26 +37,26 @@ public class Lore implements CommandExecutor {
 
                         if (!itemdata.has(new NamespacedKey(Lored.getPlugin(), "lored"), PersistentDataType.STRING)){
 
-                            player.sendMessage(ChatColor.LIGHT_PURPLE + "This item has not had a lore scroll applied!");
+                            player.sendMessage(Lang.UNAPPLIED.toString());
                             return false;
                         }
                         if (itemdata.has(new NamespacedKey(Lored.getPlugin(), "lore-lock"), PersistentDataType.STRING)){
 
-                            player.sendMessage(ChatColor.LIGHT_PURPLE + "The lore on this item is permanently locked!");
+                            player.sendMessage(Lang.ALREADY_LOCKED.toString());
                             return false;
                         }
 
                         if(args.length == 1 || args.length == 2){
-                            player.sendMessage(ChatColor.LIGHT_PURPLE + "Enter a lore line number and text.");
+                            player.sendMessage(Lang.EMPTY_INPUT.toString());
                         }else{
 
                             if(Integer.parseInt(args[1]) > 15){
-                                player.sendMessage(ChatColor.LIGHT_PURPLE + "Max Number of Lore Lines is 15.");
+                                player.sendMessage(Lang.LINE_LIMIT.toString());
                                 return false;
                             }
 
                             if(Integer.parseInt(args[1]) <= 0){
-                                player.sendMessage(ChatColor.LIGHT_PURPLE + "Incorrect Lore Line.");
+                                player.sendMessage(Lang.INCORRECT_LINE.toString());
                                 return false;
                             }
 
@@ -74,7 +75,7 @@ public class Lore implements CommandExecutor {
                             int textLength = text.length();
 
                             if(textLength > 64){
-                                player.sendMessage(ChatColor.LIGHT_PURPLE + "Maximum Character Limit is 32 Characters.");
+                                player.sendMessage(Lang.CHAR_LIMIT.toString());
                                 return false;
                             }
 
@@ -85,7 +86,7 @@ public class Lore implements CommandExecutor {
                                 try{
                                 lore.set(real_line, convertedtext);
                                 meta.setLore(lore);
-                                player.sendMessage(String.format("§8Changed lore line %s to §r%s",Integer.parseInt(args[1]), convertedtext));
+                                player.sendMessage(String.format(Lang.CHANGED_LINE.toString(),Integer.parseInt(args[1]), convertedtext));
                                 item.setItemMeta(meta);
                                 player.updateInventory();
                                 return true;
@@ -93,7 +94,7 @@ public class Lore implements CommandExecutor {
                                 catch(IndexOutOfBoundsException e) {
                                     lore.add(convertedtext);
                                     meta.setLore(lore);
-                                    player.sendMessage(String.format("§8Changed lore line %s to §r%s", Integer.parseInt(args[1]), convertedtext));
+                                    player.sendMessage(String.format(Lang.CHANGED_LINE.toString(), Integer.parseInt(args[1]), convertedtext));
                                     item.setItemMeta(meta);
                                     player.updateInventory();
                                    return true;
@@ -112,13 +113,13 @@ public class Lore implements CommandExecutor {
 
                     if (!itemdata.has(new NamespacedKey(Lored.getPlugin(), "lored"), PersistentDataType.STRING)){
 
-                        player.sendMessage(ChatColor.LIGHT_PURPLE + "This item has not had a lore scroll applied!");
+                        player.sendMessage(Lang.UNAPPLIED.toString());
                         return false;
                     }
 
                     if (itemdata.has(new NamespacedKey(Lored.getPlugin(), "lore-lock"), PersistentDataType.STRING)){
 
-                        player.sendMessage(ChatColor.LIGHT_PURPLE + "The lore on this item is permanently locked!");
+                        player.sendMessage(Lang.ALREADY_LOCKED.toString());
                         return false;
                     }
 
@@ -127,7 +128,7 @@ public class Lore implements CommandExecutor {
                     lore.add("§fThe Lore on this item was cleared!");
                     meta.setLore(lore);
                     item.setItemMeta(meta);
-                    player.sendMessage(ChatColor.LIGHT_PURPLE + "Lore successfully cleared!");
+                    player.sendMessage(Lang.CLEARED.toString());
                     player.updateInventory();
                 }
                 if(args[0].equalsIgnoreCase("lock")){
@@ -137,19 +138,19 @@ public class Lore implements CommandExecutor {
 
                     if (!itemdata.has(new NamespacedKey(Lored.getPlugin(), "lored"), PersistentDataType.STRING)){
 
-                        player.sendMessage(ChatColor.LIGHT_PURPLE + "This item has not had a lore scroll applied!");
+                        player.sendMessage(Lang.UNAPPLIED.toString());
                         return false;
                     }
                     if (itemdata.has(new NamespacedKey(Lored.getPlugin(), "lore-lock"), PersistentDataType.STRING)){
 
-                        player.sendMessage(ChatColor.LIGHT_PURPLE + "The lore on this item is already locked!");
+                        player.sendMessage(Lang.ALREADY_LOCKED.toString());
                         return false;
                     }
 
                     else{
                         itemdata.set(new NamespacedKey(Lored.getPlugin(), "lore-lock"), PersistentDataType.STRING, "true");
                         item.setItemMeta(meta);
-                        player.sendMessage(ChatColor.LIGHT_PURPLE + "Successfully locked the lore to your sword!");
+                        player.sendMessage(Lang.LOCKED.toString());
                         return true;
                     }
 
@@ -161,17 +162,17 @@ public class Lore implements CommandExecutor {
 
                     if (!itemdata.has(new NamespacedKey(Lored.getPlugin(), "lored"), PersistentDataType.STRING)){
 
-                        player.sendMessage(ChatColor.LIGHT_PURPLE + "This item has not had a lore scroll applied!");
+                        player.sendMessage(Lang.UNAPPLIED.toString());
                         return false;
                     }
                     if (itemdata.has(new NamespacedKey(Lored.getPlugin(), "lore-lock"), PersistentDataType.STRING)){
 
-                        player.sendMessage(ChatColor.LIGHT_PURPLE + "The lore on this item is permanently locked!");
+                        player.sendMessage(Lang.ALREADY_LOCKED.toString());
                         return false;
                     }
 
                     if(args.length == 1){
-                        player.sendMessage(ChatColor.LIGHT_PURPLE + "Enter a title!");
+                        player.sendMessage(Lang.NO_TITLE.toString());
                         return false;
                     }else{
 
@@ -182,12 +183,12 @@ public class Lore implements CommandExecutor {
                     message = message.trim();
                     int textLength = message.length();
                     if(textLength > 32){
-                            player.sendMessage(ChatColor.LIGHT_PURPLE + "Maximum Character Limit is 32 Characters.");
+                            player.sendMessage(Lang.CHAR_LIMIT.toString());
                             return false;
                         }
                     String convertedtext = message.replaceAll("&", "§");
                     meta.setDisplayName(convertedtext);
-                    player.sendMessage(String.format("§8Changed item title to §r%s", convertedtext));
+                    player.sendMessage(String.format(Lang.CHANGED_TITLE.toString(), convertedtext));
                     item.setItemMeta(meta);
                     player.updateInventory();
                     return true;
