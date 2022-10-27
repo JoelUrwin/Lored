@@ -1,0 +1,32 @@
+#This lang.yml file is for customizing messages used in Lored
+#This is the default lore line applied to an item
+defaultline: ""
+#This message will be sent to the user after applying a lore scroll.
+success: "Successfully applied the lore scroll."
+#This message will be broadcasted to the server when a lore scroll is applied.
+#Use %s to refer to the player name.
+broadcast: "%s just applied a lore scroll!"
+
+#This is to the edit the "check out the store" thingy I added.
+store-url: ""
+store-url-hover-message: "Click here to go to our store!"
+
+#The Error Messages.
+inapplicable : "This item already has a lore scroll applied!"
+overstacked-item: "Only one item can be lored!"
+unapplied: "This item has not had a lore scroll applied!"
+already-locked: "The lore scroll on this item has been locked!"
+line-limit: "You have reached the line limit! Max: "
+empty-input: "Enter a lore line number and text."
+incorrect-line: "Incorrect lore line."
+char-limit: "Maximum Character Limit is "
+no-title: "Enter a title."
+
+
+#Function messages
+added-line: 'Added line "%s"'
+changed-line: "Changed lore line %s to %s"
+changed-title: "Changed title to %s"
+cleared: "Successfully cleared lore lines."
+locked: "Successfully locked the lore to your sword!"
+title-change: "Successfully changed title to %s"

@@ -1,0 +1,8 @@
+main: in.joelurw.Lored.Lored
+version: 1.0
+name: Lored
+load: POSTWORLD
+author: Asynchronized
+commands:
+  lore:
+    description: Opens Lore Editor
