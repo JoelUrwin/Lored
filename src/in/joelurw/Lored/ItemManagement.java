@@ -25,9 +25,9 @@ public class ItemManagement {
         ItemMeta meta = item.getItemMeta();
         PersistentDataContainer data = meta.getPersistentDataContainer();
         data.set(new NamespacedKey(Lored.getPlugin(), "lore-scroll"), PersistentDataType.STRING, "true");
-        meta.setDisplayName("§5Lore Scroll");
+        meta.setDisplayName(Lang.LORE_SCROLL_TITLE.toString());
         List<String> lore = new ArrayList<>();
-        lore.add("§fApply custom lore to your item!");
+        lore.add(Lang.LORE_SCROLL_DESC.toString());
         meta.setLore(lore);
         item.setItemMeta(meta);
         lore_scroll = item;

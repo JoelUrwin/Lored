@@ -15,6 +15,8 @@ public class Lored extends JavaPlugin {
 
     public static YamlConfiguration LANG;
     public static File LANG_FILE;
+    public static YamlConfiguration CONFIG;
+    public static File CONFIG_FILE;
 
     public static Lored getPlugin() {
         return plugin;
@@ -78,12 +80,49 @@ public class Lored extends JavaPlugin {
         return conf;
     }
 
+    public FileConfiguration loadConfig() {
+        File config = new File(getDataFolder(), "config.yml");
+        if (!config.exists()) {
+            try {
+                getDataFolder().mkdir();
+                config.createNewFile();
+                InputStream defConfigStream = this.getResource("config.yml");
+                if (defConfigStream != null) {
+                    YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(config);
+                    defConfig.save(config);
+                    Config.setFile(defConfig);
+                    return defConfig;
+                }
+            } catch(IOException e) {
+                e.printStackTrace(); // So they notice
+                this.setEnabled(false); // Without it loaded, we can't send them messages
+            }
+        }
+        YamlConfiguration conf = YamlConfiguration.loadConfiguration(config);
+        for(Config item:Config.values()) {
+            if (conf.getString(item.getPath()) == null) {
+                conf.set(item.getPath(), item.getDefault());
+            }
+        }
+        Config.setFile(conf);
+        Lored.CONFIG = conf;
+        Lored.CONFIG_FILE = config;
+        try {
+            conf.save(getLangFile());
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        return conf;
+    }
+
     public File getLangFile() {
         return LANG_FILE;
     }
+    public File getConfigFile(){return CONFIG_FILE;}
 
     public YamlConfiguration getLang() {
         return LANG;
     }
+    public YamlConfiguration getConfig(){return CONFIG;}
 
 }

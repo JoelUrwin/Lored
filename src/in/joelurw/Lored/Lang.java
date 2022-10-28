@@ -23,7 +23,9 @@ public enum Lang {
     CHANGED_TITLE("changed-title","Changed title to %s"),
     CLEARED("cleared","Successfully cleared lore lines."),
     LOCKED("locked","Successfully locked the lore to your item!"),
-    TITLE_CHANGE("title-change","Successfully changed title to %s");
+    TITLE_CHANGE("title-change","Successfully changed title to %s"),
+    LORE_SCROLL_TITLE("lore-scroll-title","§5Lore Scroll"),
+    LORE_SCROLL_DESC("lore-scroll-description", "§fApply custom lore to your item!");
 
     private String path;
     private String def;
