@@ -20,7 +20,7 @@ public enum Lang {
     NO_TITLE("no-title","Enter a title."),
     ADDED_LINE("added-line","Added line %s"),
     CHANGED_LINE("changed-line","Changed lore line %s to %s"),
-    CHANGED_TITLE("changed-line","Changed title to %s"),
+    CHANGED_TITLE("changed-title","Changed title to %s"),
     CLEARED("cleared","Successfully cleared lore lines."),
     LOCKED("locked","Successfully locked the lore to your item!"),
     TITLE_CHANGE("title-change","Successfully changed title to %s");

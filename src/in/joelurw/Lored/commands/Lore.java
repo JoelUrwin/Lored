@@ -29,7 +29,7 @@ public class Lore implements CommandExecutor {
             Player player = (Player) sender;
 
             if(args.length > 0){
-                if(args[0].equalsIgnoreCase("edit")){
+                if(args[0].equalsIgnoreCase("edit") || args[0].equalsIgnoreCase("line")){
                     try{
                         ItemStack item = player.getInventory().getItemInMainHand();
                         ItemMeta meta = item.getItemMeta();
@@ -125,7 +125,7 @@ public class Lore implements CommandExecutor {
 
                     meta.setDisplayName(item.getType().name());
                     List<String> lore = new ArrayList<>();
-                    lore.add("§fThe Lore on this item was cleared!");
+                    lore.add(Lang.CLEARED.toString());
                     meta.setLore(lore);
                     item.setItemMeta(meta);
                     player.sendMessage(Lang.CLEARED.toString());
@@ -186,9 +186,8 @@ public class Lore implements CommandExecutor {
                             player.sendMessage(Lang.CHAR_LIMIT.toString());
                             return false;
                         }
-                    String convertedtext = message.replaceAll("&", "§");
-                    meta.setDisplayName(convertedtext);
-                    player.sendMessage(String.format(Lang.CHANGED_TITLE.toString(), convertedtext));
+                    meta.setDisplayName(message.replaceAll("&", "§"));
+                    player.sendMessage(String.format(Lang.CHANGED_TITLE.toString(), message.replaceAll("&", "§")));
                     item.setItemMeta(meta);
                     player.updateInventory();
                     return true;

@@ -29,7 +29,7 @@ public class Lored extends JavaPlugin {
         getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[Lored by Asynchronized] : Enabled!");
         getServer().getPluginManager().registerEvents(new LoreScrollApplyEvent(), this);
         getCommand("lore").setExecutor(new Lore());
-
+        loadLang();
 
     }
 

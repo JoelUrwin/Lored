@@ -26,7 +26,6 @@ no-title: "Enter a title."
 #Function messages
 added-line: 'Added line "%s"'
 changed-line: "Changed lore line %s to %s"
-changed-title: "Changed title to %s"
 cleared: "Successfully cleared lore lines."
 locked: "Successfully locked the lore to your sword!"
-title-change: "Successfully changed title to %s"
+changed-title: "Successfully changed title to %s"
