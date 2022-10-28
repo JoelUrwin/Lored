@@ -27,13 +27,12 @@ public class Lored extends JavaPlugin {
     @Override
     public void onEnable(){
         plugin = this;
-        ItemManagement.init();
-        getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[Lored by Asynchronized] : Enabled!");
-        getServer().getPluginManager().registerEvents(new LoreScrollApplyEvent(), this);
-        getCommand("lore").setExecutor(new Lore());
         loadLang();
         loadConfig();
-
+        ItemManagement.init();
+        getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[Lored by Asynchronized] : Enabled!");
+        getCommand("lore").setExecutor(new Lore());
+        getServer().getPluginManager().registerEvents(new LoreScrollApplyEvent(), this);
     }
 
     @Override
@@ -109,7 +108,7 @@ public class Lored extends JavaPlugin {
         Lored.CONFIG = conf;
         Lored.CONFIG_FILE = config;
         try {
-            conf.save(getLangFile());
+            conf.save(getConfigFile());
         } catch(IOException e) {
             e.printStackTrace();
         }

@@ -59,7 +59,9 @@ public class LoreScrollApplyEvent implements Listener {
                 applicantmeta.setLore(lore);
                 applicantData.set(new NamespacedKey(Lored.getPlugin(), "lored"), PersistentDataType.STRING, "true");
                 applicant.setItemMeta(applicantmeta);
-                p.playSound(p.getLocation(), Config.CONFIRMATION_SOUND.castSound(), 10f, 10f);
+
+                if(Config.CONFIRMATION_SOUND.castBool()){p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10f, 10f);}
+
                 p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(Lang.SUCCESS.toString()));
                 if(Config.BROADCAST.castBool()){
 

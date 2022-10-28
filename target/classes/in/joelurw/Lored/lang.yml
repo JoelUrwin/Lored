@@ -29,3 +29,7 @@ changed-line: "Changed lore line %s to %s"
 cleared: "Successfully cleared lore lines."
 locked: "Successfully locked the lore to your sword!"
 changed-title: "Successfully changed title to %s"
+
+#Lore Scroll Item
+lore-scroll-title: "§5Lore Scroll"
+lore-scroll-description: "§fApply custom lore to your item!"
