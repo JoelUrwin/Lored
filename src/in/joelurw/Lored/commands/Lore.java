@@ -2,6 +2,7 @@ package in.joelurw.Lored.commands;
 
 import in.joelurw.Lored.ItemManagement;
 import in.joelurw.Lored.Lang;
+import in.joelurw.Lored.Config;
 import in.joelurw.Lored.Lored;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -49,8 +50,7 @@ public class Lore implements CommandExecutor {
                         if(args.length == 1 || args.length == 2){
                             player.sendMessage(Lang.EMPTY_INPUT.toString());
                         }else{
-
-                            if(Integer.parseInt(args[1]) > 15){
+                            if(Integer.parseInt(args[1]) > Config.LINE_LIMIT.castInt()){
                                 player.sendMessage(Lang.LINE_LIMIT.toString());
                                 return false;
                             }
@@ -74,7 +74,7 @@ public class Lore implements CommandExecutor {
 
                             int textLength = text.length();
 
-                            if(textLength > 64){
+                            if(textLength > Config.LORE_CHAR_LIMIT.castInt()){
                                 player.sendMessage(Lang.CHAR_LIMIT.toString());
                                 return false;
                             }
@@ -182,7 +182,7 @@ public class Lore implements CommandExecutor {
                     }
                     message = message.trim();
                     int textLength = message.length();
-                    if(textLength > 32){
+                    if(textLength > Config.TITLE_CHAR_LIMIT.castInt()){
                             player.sendMessage(Lang.CHAR_LIMIT.toString());
                             return false;
                         }

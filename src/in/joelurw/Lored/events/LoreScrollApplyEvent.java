@@ -17,6 +17,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import in.joelurw.Lored.Config;
 
 import javax.naming.Name;
 import java.util.ArrayList;
@@ -54,12 +55,14 @@ public class LoreScrollApplyEvent implements Listener {
 
 
                 List<String> lore = new ArrayList<>();
-                lore.add("§fApply custom lore to your item using /lore edit!");
+                lore.add(Lang.LORE_SCROLL_DESC.toString());
                 applicantmeta.setLore(lore);
                 applicantData.set(new NamespacedKey(Lored.getPlugin(), "lored"), PersistentDataType.STRING, "true");
                 applicant.setItemMeta(applicantmeta);
-                p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10f, 10f);
+                p.playSound(p.getLocation(), Config.CONFIRMATION_SOUND.castSound(), 10f, 10f);
                 p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(Lang.SUCCESS.toString()));
+                if(Config.BROADCAST.castBool()){
+
                 for (Player player : Bukkit.getServer().getOnlinePlayers()){
 
                     TextComponent message = new TextComponent(String.format(Lang.BROADCAST.toString(), p.getName()));
@@ -69,7 +72,7 @@ public class LoreScrollApplyEvent implements Listener {
                     player.spigot().sendMessage(message);
                 }
                 cii.setAmount(cii.getAmount() - 1);
-            }
+            }}
 
 
 

@@ -1,4 +1,5 @@
 line_limit: 15
 lore_char_limit: 64
 title_char_limit: 32
-broadcast: True
+broadcast: true
+confirmation-sound: Sound.ENTITY_PLAYER_LEVELUP

@@ -1,6 +1,7 @@
 package in.joelurw.Lored;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public enum Config {
@@ -8,7 +9,8 @@ public enum Config {
     LINE_LIMIT("line_limit", 15),
     LORE_CHAR_LIMIT("lore_char_limit", 64),
     TITLE_CHAR_LIMIT("title_char_limit", 32),
-    BROADCAST("broadcast", "True");
+    BROADCAST("broadcast", true),
+    CONFIRMATION_SOUND("confirmation-sound", Sound.ENTITY_PLAYER_LEVELUP);
 
     private String path;
     private Object def;
@@ -25,6 +27,15 @@ public enum Config {
     public String toString() {
         return ChatColor.translateAlternateColorCodes('&', CONFIG.getString(this.path, def.toString()));
     }
+
+    public Integer castInt()
+    {return (Integer) this.def;}
+
+    public Sound castSound()
+    {return (Sound) this.def;}
+
+    public Boolean castBool()
+    {return (Boolean) this.def;}
 
     /**
      * Get the default value of the path.
