@@ -32,4 +32,8 @@ jobs:
     - name: CD within Container
       run: ls -a
 
+    - name: CD within Container
+      run: cd target || ls -a
+
+
 
