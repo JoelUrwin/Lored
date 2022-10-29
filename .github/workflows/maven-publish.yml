@@ -27,16 +27,13 @@ jobs:
         #settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build Maven Package...
-      run: mvn -B package --file pom.xml
+      run: mvn -B clean compile package --file pom.xml
 
-    - name: CD within Container
-      run: ls -a
+    - name: Publish to GitHub Packages Apache Maven
+      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
 
-    - name: CD within Container
-      run: cd target
-
-    - name: CD within Target Folder
-      run: ls -a
 
 
 
