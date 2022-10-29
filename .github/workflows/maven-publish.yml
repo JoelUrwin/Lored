@@ -33,7 +33,10 @@ jobs:
       run: ls -a
 
     - name: CD within Container
-      run: cd target || ls -a
+      run: cd target
+
+    - name: CD within Target Folder
+      run: ls -a
 
 
 
